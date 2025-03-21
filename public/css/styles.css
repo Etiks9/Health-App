@@ -4,7 +4,8 @@
   --neutral-bg: #f8f6f6;
   --primary-color: #266431;
   --complementary-color: #f5b748;
-  --alert-color: #ff6f4c;
+  --alert-color: #ffe6e6;
+  --hover-color: rgba(0, 0, 0, 0.2);
 }
 
 * {
@@ -14,6 +15,16 @@
   font-family: "Lato", sans-serif;
   font-size: 1rem;
   color: var(--outline-color);
+}
+
+.error-message {
+  color: red;
+  background-color: var(--alert-color);
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
 .content {
@@ -52,6 +63,13 @@
   width: 300px;
   border: none;
   border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.button > button:hover,
+.form-btn:hover {
+  transform: scale(1.09);
+  box-shadow: 0px 5px 15px var(--hover-color);
 }
 
 .landing-page p {
@@ -59,11 +77,27 @@
   color: var(--outline-color);
 }
 
-.CTA,
 .cta-link {
+  position: relative;
   color: var(--primary-color);
   font-weight: 800;
   text-decoration: none;
+}
+
+.cta-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.cta-link:hover::after {
+  transform: scaleX(1);
 }
 
 .header {
@@ -84,7 +118,7 @@
 .icon-btn {
   padding: 8px;
   border: none;
-  background-color: transparent;
+  background: none;
 }
 .fa-solid {
   font-weight: 900;
@@ -137,18 +171,26 @@ form {
   gap: 8px;
   width: 100%;
   margin: 8px 0px 15px 0px;
+  border: 2px solid var(--neutral-bg);
+  transition: border-color 0.3s ease-in-out;
+}
+
+.input-btn:focus-within {
+  border-color: var(--primary-color);
 }
 
 input {
   flex: 1;
   padding: 15px;
+  border: none;
+  outline: none;
+  background-color: transparent;
 }
 
 .input-btn,
 input {
   background-color: var(--neutral-bg);
   border-radius: 10px;
-  border: none;
 }
 
 .form-btn {
@@ -259,4 +301,35 @@ nav .fa-solid {
 
 .side-menu .menu .item a:hover i {
   color: var(--neutral-bg);
+}
+
+/* Home */
+.container {
+  width: 90%;
+  /* max-width: 600px; */
+  margin: 20px;
+}
+
+.meal-card {
+  width: 280px;
+  height: 160px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--neutral-bg);
+  border-radius: 10px;
+  margin: 10px 0px;
+}
+
+.meal-card > .meal-details {
+  padding: 20px;
+  line-height: 20px;
+}
+
+.meal-image {
+  width: 120px;
+  height: 160px;
+  /* object-fit: cover; */
+  border-radius: 10px;
 }

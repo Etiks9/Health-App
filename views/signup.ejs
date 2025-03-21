@@ -17,6 +17,11 @@
     ></script>
   </head>
   <body>
+    <% if(error) {%>
+    <div class="error-message" id="error-message">
+      <p><%= error %></p>
+    </div>
+    <% } %>
     <div class="header">
       <button type="button" class="icon-btn">
         <i class="fa-solid fa-angle-left"></i>
@@ -68,7 +73,7 @@
             </button>
           </div>
 
-          <label for="confirm-password">confirm Password</label>
+          <label for="confirm-password">Confirm password</label>
           <div class="input-btn">
             <input
               type="password"
@@ -89,6 +94,7 @@
         Already have an account? <a href="/login" class="cta-link">Log In</a>
       </p>
     </div>
+    <script src="js/app.js"></script>
     <script src="/index.js"></script>
   </body>
 </html>

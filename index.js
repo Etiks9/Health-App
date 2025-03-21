@@ -13,6 +13,8 @@ const saltRounds = 12;
 // Initialize env
 env.config();
 
+app.set("view engine", "ejs"); //Setting EJS as a view engine
+
 // Initialize session
 app.use(
   session({
@@ -54,7 +56,9 @@ app.get("/login", (req, res) => {
 });
 
 app.get("/signup", (req, res) => {
-  res.render("signup.ejs");
+  const error = req.session.error;
+  req.session.error = null;
+  res.render("signup", { error }); // Express automatically finds sign.ejs up in the views
 });
 
 app.get("/home", (req, res) => {
@@ -116,7 +120,9 @@ app.post("/login", (req, res, next) => {
 
     // If user is not found ot password in incorrect
     if (!user) {
-      return res.status(401).json({ error: info.message });
+      req.session.error = "User not found. Please sign up.";
+      return res.redirect("/signup");
+      // return res.status(401).json({ error: info.message });
     }
 
     // Log user in
