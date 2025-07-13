@@ -4,20 +4,104 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <%- include("partials/header.ejs") %>
     <div class="container">
-      <h2 class="title">Meal Summary</h2>
-      <div class="meal-card">
-        <div class="meal-details">
-          <h2>Chicken Brocolli Salad</h2>
-          <p>50 g carb</p>
-          <p>5 g fat</p>
-          <p>120 g proteins</p>
+      <div>
+        <h2 class="title">Meal Summary</h2>
+        <div class="carousel-container">
+          <button class="carousel-btn right">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <div class="carousel">
+            <div class="meal-card">
+              <div class="meal-details">
+                <h2>Chicken Brocolli Salad</h2>
+                <p>50 g carb</p>
+                <p>5 g fat</p>
+                <p>120 g proteins</p>
+              </div>
+              <img
+                src="/images/MealImage.png"
+                alt="meal-Image"
+                class="meal-image"
+              />
+            </div>
+            <div class="meal-card">
+              <div class="meal-details">
+                <h2>Chicken Brocolli Salad</h2>
+                <p>50 g carb</p>
+                <p>5 g fat</p>
+                <p>120 g proteins</p>
+              </div>
+              <img
+                src="/images/MealImage.png"
+                alt="meal-Image"
+                class="meal-image"
+              />
+            </div>
+            <div class="meal-card">
+              <div class="meal-details">
+                <h2>Chicken Brocolli Salad</h2>
+                <p>50 g carb</p>
+                <p>5 g fat</p>
+                <p>120 g proteins</p>
+              </div>
+              <img
+                src="/images/MealImage.png"
+                alt="meal-Image"
+                class="meal-image"
+              />
+            </div>
+            <div class="meal-card">
+              <div class="meal-details">
+                <h2>Chicken Brocolli Salad</h2>
+                <p>50 g carb</p>
+                <p>5 g fat</p>
+                <p>120 g proteins</p>
+              </div>
+              <img
+                src="/images/MealImage.png"
+                alt="meal-Image"
+                class="meal-image"
+              />
+            </div>
+            <div class="meal-card">
+              <div class="meal-details">
+                <h2>Chicken Brocolli Salad</h2>
+                <p>50 g carb</p>
+                <p>5 g fat</p>
+                <p>120 g proteins</p>
+              </div>
+              <img
+                src="/images/MealImage.png"
+                alt="meal-Image"
+                class="meal-image"
+              />
+            </div>
+          </div>
+          <button class="carousel-btn left">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
         </div>
-        <img src="/images/MealImage.png" alt="meal-Image" class="meal-image" />
+        <a href="#" class="primary-btn"><button>Log a Meal</button></a>
+      </div>
+      <div>
+        <h2 class="title">Weight Tracking</h2>
+        <div
+          class="graph-container"
+          style="width: 100%; max-width: 800px; margin: auto"
+        >
+          <canvas id="myChart"></canvas>
+        </div>
+        <a href="#" class="primary-btn"><button>View Full Tracker</button></a>
       </div>
     </div>
+
+    <script src="js/graphic.js"></script>
+    <script src="js/app.js"></script>
+    <script src="/index.js"></script>
   </body>
 </html>

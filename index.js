@@ -7,11 +7,12 @@ import session from "express-session";
 import passport from "passport";
 import { Strategy } from "passport-local";
 
-const app = express();
-const port = 3000;
-const saltRounds = 12;
 // Initialize env
 env.config();
+
+const app = express();
+const port = process.env.PORT || 4000;
+const saltRounds = 12;
 
 app.set("view engine", "ejs"); //Setting EJS as a view engine
 
@@ -24,6 +25,7 @@ app.use(
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 7,
       httpOnly: true,
+      secure: process.env.NODE_ENV === "production", // HTTPS-only in production
     },
   })
 );
@@ -36,23 +38,34 @@ app.use(passport.session());
 const db = new pg.Client({
   user: process.env.DB_USER,
   host: process.env.DB_HOST,
-  database: process.env.DB_DATABASE,
+  database: process.env.DB_NAME,
   password: process.env.DB_PASSWORD,
   port: process.env.DB_PORT,
+  // ssl: {
+  //   // Required for Azure
+  //   rejectUnauthorized: false,
+  // },
 });
-db.connect();
+
+try {
+  await db.connect();
+  console.log("Connected to PostgreSQL");
+} catch (error) {
+  console.log("Database connection error:", error.message);
+}
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // Routes
+
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  res.render("index");
 });
 
 app.get("/login", (req, res) => {
-  res.render("login.ejs");
+  res.render("login");
 });
 
 app.get("/signup", (req, res) => {
@@ -63,10 +76,26 @@ app.get("/signup", (req, res) => {
 
 app.get("/home", (req, res) => {
   if (req.isAuthenticated()) {
-    res.render("home.ejs");
+    res.render("home");
   } else {
     res.redirect("/login");
   }
+});
+
+app.get("/meal-logs", (req, res) => {
+  if (req.isAuthenticated()) {
+    res.render("meal-logs");
+  } else {
+    res.redirect("/login");
+  }
+});
+
+app.get("/weight-tracker", (req, res) => {
+  res.render("weight-tracker");
+});
+
+app.get("/settings", (req, res) => {
+  res.render("settings");
 });
 
 app.post("/signup", async (req, res) => {

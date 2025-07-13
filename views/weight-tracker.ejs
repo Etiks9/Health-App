@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weight Tracker</title>
+  </head>
+  <body>
+    <%- include("partials/header.ejs") %>
+    <div class="container">
+      <div>
+        <h2 class="title">Progress</h2>
+        <!-- Progress Card -->
+        <div class="progress-card">
+          <table>
+            <tr>
+              <td scope="row">Now</td>
+              <td>40.5</td>
+            </tr>
+            <tr>
+              <td scope="row">Your goal</td>
+              <td>50 kg</td>
+            </tr>
+          </table>
+          <div class="progress-text">40 kg</div>
+          <!-- progress bar -->
+          <div class="progress">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2 class="title">History</h2>
+        <!-- Weight history card -->
+        <div class="weight-card">
+          <div class="history">
+            <p>May</p>
+            <h2 class="title">40.5 kg</h2>
+          </div>
+          <div class="indicator">
+            <img
+              src="/images/increase-pointer.png"
+              alt="arrow showing increase"
+            />
+            <span>0.5kg</span>
+          </div>
+        </div>
+        <div class="weight-card">
+          <div class="history">
+            <p>April</p>
+            <h2 class="title">40 kg</h2>
+          </div>
+          <div class="indicator">
+            <img
+              src="/images/decrease-pointer.png"
+              alt="arrow showing increase"
+            />
+            <span>2 kg</span>
+          </div>
+        </div>
+        <a href="#" class="primary-btn"><button>View Full Tracker</button></a>
+      </div>
+    </div>
+
+    <script src="/index.js"></script>
+  </body>
+</html>

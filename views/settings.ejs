@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <%- include("partials/header.ejs") %>
+    <nav class="settings-nav">
+      <div class="settings-item">
+        <a href="#"><i class="fa-solid fa-user"></i>Personal Details</a>
+      </div>
+      <div class="settings-item">
+        <a href="#"><i class="fa-solid fa-bell"></i>Notifications</a>
+      </div>
+      <div class="settings-item flex-flex-item">
+        <a href="#"><i class="fa-solid fa-circle-half-stroke"></i>Dark Mode</a>
+        <i class="fa-solid fa-toggle-off"></i>
+      </div>
+      <div class="settings-item">
+        <a href="#"><i class="fa-solid fa-right-from-bracket"></i>Log out</a>
+      </div>
+    </nav>
+    <script src="js/app.js"></script>
+    <script src="/index.js"></script>
+  </body>
+</html>
